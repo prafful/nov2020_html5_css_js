@@ -1,4 +1,5 @@
 import React from "react"
+import ReviewList from "../review/reviewlist"
 
 
 
@@ -16,6 +17,8 @@ class ChennaiRootComponent extends React.Component{
                 <h1>I am JSX!!!! in root component!</h1>
                 <p>Name: {this.name}</p>
                 {this.welcome()}
+                <hr></hr>
+                <ReviewList></ReviewList>
             </div>
         )
     }
