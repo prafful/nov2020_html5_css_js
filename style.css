@@ -1,0 +1,28 @@
+.menu{
+
+    list-style: none;
+
+
+}
+
+
+.menuitem{
+
+    display: inline;
+    color: blue;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 10px ;
+    transition: all 0.5s ease-in;
+
+
+}
+
+.menuitem:hover{
+    background-color: blue;
+    color: white;
+    border-radius: 10px;
+    transition: all 0.5s ease-in;
+}

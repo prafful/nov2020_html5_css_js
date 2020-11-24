@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Basics!!!!</title>
+</head>
+<body>
+    <header>HTML5 Features</header>
+    <aside>Sidebar</aside>
+    <article>
+        <h1>Live-reload</h1>
+        <p>Use live-server extension in VS Code from Ritwik Dey. I am with live-reload!!!!</p>
+
+        <h1>New Form Elements</h1>
+        <form >
+            Name: <input type="text" required>
+            <br>
+            Color: <input type="color">
+            <br>
+            Date Of Birth: <input type="date" step="5">
+            <br>
+            Age: <input type="number" min="25" max="50" step="5">
+            <br>
+            Email: <input type="email" >
+    
+            <br>
+            <br>
+            <button type="submit">Add</button>
+        </form>
+        <h1 id="multimedia">Multimedia Support!</h1>
+        <button onclick="playVideo()">Play</button>
+        &nbsp;
+        <button onclick="pauseVideo()">Pause</button>
+        <br><br>
+        <video controls  muted id="bunny">
+            <source src="video/bunny.mp4" >
+            <source src="video/bunny.ogv" >
+            <source src="video/bunny.mov" >
+        </video>
+
+        <br>
+        <iframe  src="https://www.youtube.com/embed/5PE_Wubg92U" ></iframe>
+
+    </article>
+
+
+    <footer id="footer">@Copyright</footer>
+
+    <script>
+        var myvideo = document.getElementById('bunny')
+
+        function playVideo(){
+            console.log("Play video....")
+            myvideo.play()
+        }
+
+        function pauseVideo(){
+            console.log("Pause video....")
+            myvideo.pause()
+        }
+
+
+
+    </script>
+</body>
+</html>

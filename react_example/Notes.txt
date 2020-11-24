@@ -1,0 +1,5 @@
+React
+
+Library (not the framework (Angular))
+manage the UI. JSX will create the UI. JSX => Javascript + XML kind of syntax.
+Components which are created with JSX and glued/assembled together with React and rendered with ReactDOM!

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlexBox</title>
+    <link rel="stylesheet" href="flexstyle.css">
+</head>
+<body>
+    
+    <ol class="menu">
+        <li class="menuitem">Home</li>
+        <li class="menuitem">Contact</li>
+        <li class="menuitem">Services</li>
+        <li class="menuitem">Support</li>
+        <li class="menuitem">Research</li>
+        <li class="menuitem">Jobs</li>
+    </ol>
+
+    <div class="heading">
+
+        <h1>Blogs</h1>
+        <a href="#" class="grid">Grid</a>
+        <a href="#" class="stack">Stack</a>
+    </div>
+
+    <div class="blogs">
+        <article >
+            <h2>Blog 1</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 2</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 3</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 4</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 5</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 6</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 7</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 8</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 9</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 10</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 11</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 12</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 13</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 14</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 15</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 16</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+        <article>
+            <h2>Blog 17</h2>
+            <p>I am content for blog. I am content for fblog. I am content for blog. I am content for blog.</p>
+        </article>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    
+    <script>
+
+        $('a.stack').on('click', function(){
+            $('article').addClass('stack')
+        })
+
+        $('a.grid').on('click', function(){
+            $('article').removeClass('stack')
+        })
+
+    </script>
+</body>
+</html>

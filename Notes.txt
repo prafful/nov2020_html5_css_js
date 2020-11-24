@@ -1,0 +1,19 @@
+1. Quick/FastPaced Intro to HTML5, CSS and JS
+2. React.JS
+3. Redux
+4. Semantic UI with React
+
+HTML5
+1. New form elements!
+2. New semantic elements 
+3. Multimedia Support (video and audio)
+4. SVG Support
+5. Canvas Support!
+6. HTML5 APIs
+	a. Web Storage API and Session Storage API
+	b. Drag and Drop API
+	c. GeoLocation API
+	d. WebWorkers API
+	e. SSE (Server Sent Events) API
+	f. Cache
+	g. Audio API and Video API (Multimedia API)
