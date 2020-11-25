@@ -1,0 +1,1 @@
+In blogs.js, modify the code in render() and renderBlogs() function to render the blogs in table format with heading -> Blog Id and Blog Title

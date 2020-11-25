@@ -1,4 +1,5 @@
 import React from "react"
+import Blogs from "../remote/blogs"
 
 import ReviewList from "../review/reviewlist"
 
@@ -37,7 +38,7 @@ class ChennaiRootComponent extends React.Component{
                 {this.welcome()}
                 <hr></hr>
                 <ReviewList></ReviewList>
-               
+               <Blogs></Blogs>
             </div>
         )
     }
