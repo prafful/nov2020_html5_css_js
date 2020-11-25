@@ -1,9 +1,19 @@
 import React from "react"
+
 import ReviewList from "../review/reviewlist"
 
 
 
 class ChennaiRootComponent extends React.Component{
+
+    applyNow = {
+        color:"blue",
+        border:"1px solid red",
+        borderRadius:"10px",
+        backgroundColor:"orange",
+        paddingLeft: "5px"
+
+    }
 
     name = "Prafful Daga"
 
@@ -14,11 +24,20 @@ class ChennaiRootComponent extends React.Component{
     render(){
         return (
             <div>
-                <h1>I am JSX!!!! in root component!</h1>
-                <p>Name: {this.name}</p>
+                <h1 style={
+                            {
+                                color:"red",
+                                backgroundColor: "lightblue"
+                            }
+                        }
+                            >
+                            I am JSX!!!! in root component!
+                </h1>
+                <p style={this.applyNow}>Name: {this.name}</p>
                 {this.welcome()}
                 <hr></hr>
                 <ReviewList></ReviewList>
+               
             </div>
         )
     }
