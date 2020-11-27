@@ -1,4 +1,5 @@
 import React from "react"
+import FakeBlogs from "../remotefake/fakeblogs"
 import Blogs from "../remote/blogs"
 
 import ReviewList from "../review/reviewlist"
@@ -38,7 +39,8 @@ class ChennaiRootComponent extends React.Component{
                 {this.welcome()}
                 <hr></hr>
                 <ReviewList></ReviewList>
-               <Blogs></Blogs>
+                <Blogs></Blogs>
+                <FakeBlogs></FakeBlogs>
             </div>
         )
     }
