@@ -44,12 +44,28 @@ class FakeBlogs extends React.Component {
         )
     }
 
+    addBlog =()=>{
+        var blogItem = {
+                "userId": 4,
+                "title": "triple screen mobiles",
+                "body": "LG 9x thinq and lg velvet v90 come with folding triple screen support!",
+            }
+        axios.post("http://localhost:1234/blogs", blogItem)
+                .then(response=>{
+                    console.log(response)
+                    this.getBlogs()
+                })
+                .catch(error=>{
+                    console.log(error);
+                })
+    }
+
     render() { 
         return (  
             <div>
                 <hr></hr>
                 <h1>List of blogs...</h1>
-                <button>Add Blog....</button>
+                <button onClick={this.addBlog}>Add Blog....</button>
                 <br></br>
                 <br></br>
                 <table border="1">
