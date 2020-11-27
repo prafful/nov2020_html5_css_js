@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from "axios";
+import SingleBlog from './singleblog';
 
 
 class Blogs extends React.Component {
@@ -32,9 +33,12 @@ class Blogs extends React.Component {
         return (
             this.state.posts.map(post=>{
                 return(
-                    <div>
-                    {post.id}. {post.title}
-                    </div>
+                    <SingleBlog
+                            myid={post.id}
+                            mytitle = {post.title}
+                    >
+
+                    </SingleBlog>
                 )
             })
         )
@@ -44,7 +48,22 @@ class Blogs extends React.Component {
         return (  
             <div>
                 <h1>List of blogs...</h1>
-                {this.renderBlogs()}
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Id
+                            </th>
+                            <th>
+                                Blog Item
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderBlogs()}
+                    </tbody>
+                    
+                </table>
             </div>
         );
     }

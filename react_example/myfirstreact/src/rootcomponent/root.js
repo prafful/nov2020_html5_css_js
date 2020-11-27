@@ -32,7 +32,7 @@ class ChennaiRootComponent extends React.Component{
                             }
                         }
                             >
-                            I am JSX!!!! in root component!
+                            I am JSX!!!!
                 </h1>
                 <p style={this.applyNow}>Name: {this.name}</p>
                 {this.welcome()}
