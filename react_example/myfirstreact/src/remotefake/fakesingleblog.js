@@ -7,7 +7,15 @@ class FakeSingleBlog extends React.Component {
             <tr>
                 <td>{this.props.myid}</td>
                 <td>{this.props.mytitle}</td>
-          
+                <td>
+                    <button>Edit</button>
+                </td>
+                <td>
+                    <button>Delete</button>
+                </td>
+                <td>
+                    <button>View Details</button>
+                </td>
             </tr>
           );
     }

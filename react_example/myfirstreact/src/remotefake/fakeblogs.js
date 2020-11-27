@@ -47,16 +47,17 @@ class FakeBlogs extends React.Component {
     render() { 
         return (  
             <div>
+                <hr></hr>
                 <h1>List of blogs...</h1>
+                <button>Add Blog....</button>
+                <br></br>
+                <br></br>
                 <table border="1">
                     <thead>
                         <tr>
-                            <th>
-                                Id
-                            </th>
-                            <th>
-                                Blog Item
-                            </th>
+                            <th>Id</th>
+                            <th>Blog Title</th>
+                            <th colSpan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
