@@ -1,6 +1,11 @@
 import React from 'react';
 
 class FakeSingleBlog extends React.Component {
+
+    captureIdForDelete=()=>{
+        console.log(this.props.myid)
+        this.props.receiveId(this.props.myid)
+    }
     
     render() { 
         return (
@@ -11,7 +16,7 @@ class FakeSingleBlog extends React.Component {
                     <button>Edit</button>
                 </td>
                 <td>
-                    <button>Delete</button>
+                    <button onClick={this.captureIdForDelete}>Delete</button>
                 </td>
                 <td>
                     <button>View Details</button>

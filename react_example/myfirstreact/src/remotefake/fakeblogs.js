@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios"
-import SingleBlog from './fakesingleblog'
+import FakeSingleBlog from './fakesingleblog'
 
 
 class FakeBlogs extends React.Component {
@@ -37,16 +37,31 @@ class FakeBlogs extends React.Component {
         return (
             this.state.posts.map(post=>{
                 return(
-                    <SingleBlog
+                    <FakeSingleBlog
                             myid={post.id}
                             mytitle = {post.title}
+                            receiveId = {this.deleteBlog}
                     >
 
-                    </SingleBlog>
+                    </FakeSingleBlog>
                 )
             })
         )
     }
+
+    deleteBlog=(id)=>{
+        console.log("Received id from child component: " + id);
+        axios.delete("http://localhost:1234/blogs" + "/" + id)
+                .then(response=>{
+                    console.log(response)
+                    this.getBlogs()
+
+                })
+                .catch(error=>{
+                    console.log(error)
+                })
+    }
+
 
     addBlog =(event)=>{
 
