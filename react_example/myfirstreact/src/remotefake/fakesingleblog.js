@@ -3,8 +3,13 @@ import React from 'react';
 class FakeSingleBlog extends React.Component {
 
     captureIdForDelete=()=>{
-        console.log(this.props.myid)
-        this.props.receiveId(this.props.myid)
+        console.log("For delete: " + this.props.myid)
+        this.props.receiveIdForDelete(this.props.myid)
+    }
+
+    captureIdForEdit=()=>{
+        console.log("For edit: " + this.props.myid)
+        this.props.receiveIdForEdit(this.props.myid)
     }
     
     render() { 
@@ -13,7 +18,7 @@ class FakeSingleBlog extends React.Component {
                 <td>{this.props.myid}</td>
                 <td>{this.props.mytitle}</td>
                 <td>
-                    <button>Edit</button>
+                    <button onClick={this.captureIdForEdit}>Edit</button>
                 </td>
                 <td>
                     <button onClick={this.captureIdForDelete}>Delete</button>

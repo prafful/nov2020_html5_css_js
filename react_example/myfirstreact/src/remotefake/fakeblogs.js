@@ -12,7 +12,9 @@ class FakeBlogs extends React.Component {
             displayAddBlogStatus: false,
             newBlogTitle:"",
             newBlogDescription:"",
-            newBlogUserId: 0
+            newBlogUserId: 0,
+            editBlogId: 0
+           
         }
     }
     
@@ -40,7 +42,8 @@ class FakeBlogs extends React.Component {
                     <FakeSingleBlog
                             myid={post.id}
                             mytitle = {post.title}
-                            receiveId = {this.deleteBlog}
+                            receiveIdForDelete = {this.deleteBlog}
+                            receiveIdForEdit = {this.editBlog}
                     >
 
                     </FakeSingleBlog>
@@ -49,8 +52,27 @@ class FakeBlogs extends React.Component {
         )
     }
 
+    editBlog =(id)=>{
+        this.setState({
+            editBlogId: id
+        })
+        console.log("Received id from child component for edit: " + id)
+        axios.get("http://localhost:1234/blogs" + "/" + id)
+            .then(response=>{
+                console.log(response)
+                this.setState({
+                    newBlogUserId: response.data.userId,
+                    newBlogTitle: response.data.title,
+                    newBlogDescription: response.data.body
+                })
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
     deleteBlog=(id)=>{
-        console.log("Received id from child component: " + id);
+        console.log("Received id from child component for delete: " + id);
         axios.delete("http://localhost:1234/blogs" + "/" + id)
                 .then(response=>{
                     console.log(response)
@@ -150,6 +172,61 @@ class FakeBlogs extends React.Component {
     
     }
 
+    editBlogWithId =(event)=>{
+        event.preventDefault()
+        var tempEditBlog={
+            title:this.state.newBlogTitle,
+            body:this.state.newBlogDescription,
+            userId: this.state.newBlogUserId
+        }
+        console.log(tempEditBlog)
+        axios.put("http://localhost:1234/blogs" + "/" + this.state.editBlogId, tempEditBlog)
+            .then(response=>{
+                console.log(response)
+                this.getBlogs()
+                this.setState({
+                    newBlogTitle:"",
+                    newBlogDescription:"",
+                    newBlogUserId: 0
+                })
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+    }
+
+    cancelEditBlog=()=>{
+        this.setState({
+            editBlogId:0
+        })
+    }    
+
+
+    displayEditBlog=()=>{
+        if(this.state.editBlogId != 0 ){
+            return (
+                <div>
+                    <form>
+                      Id: <input type="text" readOnly value={this.state.editBlogId}></input>
+                      <br></br>
+                      User Id: 
+                      <input type="text" value={this.state.newBlogUserId} readOnly></input>
+                      <br></br>
+                      Title: 
+                      <input type="text" onChange={this.captureTitle} value={this.state.newBlogTitle}></input>
+                      <br></br>
+                      Description: 
+                      <textarea onChange={this.captureDescription} value={this.state.newBlogDescription}></textarea>
+                      <br></br>
+                      <button onClick={this.editBlogWithId}>Update</button>
+                      &nbsp;
+                      <button onClick={this.cancelEditBlog}>Cancel</button>
+                  </form>
+                </div>
+            )
+        }
+    }
+
     render() { 
         return (  
             <div>
@@ -159,6 +236,9 @@ class FakeBlogs extends React.Component {
                 <br></br>
                 <br></br>
                 {this.displayAddBlog()}
+                <br></br>
+                <br></br>
+                {this.displayEditBlog()}
                 <br></br>
                 <table border="1">
                     <thead>
