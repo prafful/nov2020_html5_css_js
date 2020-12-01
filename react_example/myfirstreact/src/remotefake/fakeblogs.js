@@ -13,7 +13,13 @@ class FakeBlogs extends React.Component {
             newBlogTitle:"",
             newBlogDescription:"",
             newBlogUserId: 0,
-            editBlogId: 0
+            editBlogId: 0,
+            viewBlogId: 0,
+            viewBlogTitle:"",
+            viewBlogDescription:"",
+            viewBlogUserId: 0,
+            viewBlogUserName: "",
+            viewBlogUserLocation: ""
            
         }
     }
@@ -35,6 +41,38 @@ class FakeBlogs extends React.Component {
                 })
     }
 
+    viewDetails=(id)=>{
+        console.log("Received id for details: " +  id)
+        this.setState({
+            viewBlogId: id
+        })
+        axios.get("http://localhost:1234/blogs" + "/" + id)
+            .then(response=>{
+                console.log(response.data)
+                this.setState({
+                    viewBlogUserId: response.data.userId,
+                    viewBlogTitle: response.data.title,
+                    viewBlogDescription: response.data.body
+                })
+                axios.get("http://localhost:1234/users" + "/" + this.state.viewBlogUserId)
+                    .then(response=>{
+                        console.log(response.data)
+                        this.setState({
+                            viewBlogUserName: response.data.name,
+                            viewBlogUserLocation: response.data.location
+                        })
+                    })
+                    .catch(error=>{
+                        console.log(error)
+                    })
+            })
+            .catch(error =>{
+                console.log(error)
+            })
+
+
+    }
+
     renderBlogs =()=>{
         return (
             this.state.posts.map(post=>{
@@ -44,6 +82,7 @@ class FakeBlogs extends React.Component {
                             mytitle = {post.title}
                             receiveIdForDelete = {this.deleteBlog}
                             receiveIdForEdit = {this.editBlog}
+                            receiveIdForDetails = {this.viewDetails}
                     >
 
                     </FakeSingleBlog>
@@ -227,6 +266,35 @@ class FakeBlogs extends React.Component {
         }
     }
 
+    hideDetails=()=>{
+        this.setState({
+            viewBlogId: 0
+        })
+    }
+
+    displayDetails =()=>{
+        if(this.state.viewBlogId !=0){
+            return (
+                <div>
+                    <b>View details for id:</b> {this.state.viewBlogId} 
+                    <br></br>
+                    <b>Title:</b> {this.state.viewBlogTitle}
+                    <br></br>
+                    <b>Body:</b> {this.state.viewBlogDescription}
+                    <br></br>
+                    <b>AuthorId:</b> {this.state.viewBlogUserId}
+                    <br></br>
+                    <b>Author:</b> {this.state.viewBlogUserName}
+                    <br></br>
+                    <b>Location:</b> {this.state.viewBlogUserLocation}
+                    <br></br>
+
+                    <button onClick={this.hideDetails}> Hide</button>
+                </div>
+            )
+        }
+    }
+
     render() { 
         return (  
             <div>
@@ -237,8 +305,9 @@ class FakeBlogs extends React.Component {
                 <br></br>
                 {this.displayAddBlog()}
                 <br></br>
-                <br></br>
                 {this.displayEditBlog()}
+                <br></br>
+                {this.displayDetails()}
                 <br></br>
                 <table border="1">
                     <thead>

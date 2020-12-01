@@ -11,6 +11,11 @@ class FakeSingleBlog extends React.Component {
         console.log("For edit: " + this.props.myid)
         this.props.receiveIdForEdit(this.props.myid)
     }
+
+    captureIdForDetails=()=>{
+        console.log("For details: " + this.props.myid)
+        this.props.receiveIdForDetails(this.props.myid)
+    }
     
     render() { 
         return (
@@ -24,7 +29,7 @@ class FakeSingleBlog extends React.Component {
                     <button onClick={this.captureIdForDelete}>Delete</button>
                 </td>
                 <td>
-                    <button>View Details</button>
+                    <button onClick={this.captureIdForDetails}>View Details</button>
                 </td>
             </tr>
           );
