@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import friendClickedAction from '../action/action-friendclicked';
 import Friend from './friend'
 
 class FriendList extends React.Component {
@@ -9,12 +11,26 @@ class FriendList extends React.Component {
             return (
                 <Friend 
                     key={friend.id}
+                    id={friend.id}
                     name={friend.name}
+                    friendClickedId={this.getIdOfFriendClicked}
                     >
 
                 </Friend>
             )
         })
+    }
+
+    getIdOfFriendClicked=(id)=>{
+        console.log("Received id of friend clicked: " + id)
+        //find friend with given id from this.props.friends
+        var friendWithClickedId = this.props.friends.find(f =>{
+            return f.id === id
+        })
+        console.log("Below friend is clicked: ")
+        console.log(friendWithClickedId)
+        this.props.prepareClickedFriendForBroadcast(friendWithClickedId)
+
     }
     
     render() { 
@@ -33,10 +49,17 @@ class FriendList extends React.Component {
 }
  
 function convertStoreToPropsForFriendList(store){
+    console.log("Received store in friendlist")
     console.log(store)
     return{
         friends: store.allfriends
     }
 }
 
-export default   connect(convertStoreToPropsForFriendList)(FriendList)
+function convertEventToPropsForFriendListAndDispatch(dispatch){
+    return bindActionCreators({
+        prepareClickedFriendForBroadcast: friendClickedAction 
+    }, dispatch)
+}
+
+export default   connect(convertStoreToPropsForFriendList, convertEventToPropsForFriendListAndDispatch)(FriendList)
